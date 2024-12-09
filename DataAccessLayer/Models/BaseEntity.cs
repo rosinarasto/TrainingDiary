@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TrainingDiary.DAL.Models
+namespace DataAccessLayer.Models
 {
     public class BaseEntity
     {

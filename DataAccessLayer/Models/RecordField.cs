@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TrainingDiary.DAL.Models
+namespace DataAccessLayer.Models
 {
     public class RecordField : BaseEntity
     {

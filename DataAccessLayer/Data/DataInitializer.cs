@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TrainingDiary.DAL.Models;
+using DataAccessLayer.Models;
 
-namespace TrainingDiary.DAL.Data
+namespace DataAccessLayer.Data
 {
     public static class DataInitializer
     {
         public static void Seed(this ModelBuilder modelBuilder)
         {
             var users = PrepareUserModels();
-            var accounts = PrepareAccountModels();
+            var accounts = PrepareAccountModels(users);
             var trainingRecords = PrepairTrainingRecordModels();
             var recordFields = PrepairRecordFieldModels();
 
@@ -35,9 +35,41 @@ namespace TrainingDiary.DAL.Data
             throw new NotImplementedException();
         }
 
-        private static List<Account> PrepareAccountModels()
+        private static List<Account> PrepareAccountModels(List<User> users)
         {
-            throw new NotImplementedException();
+            return
+            [
+                new Account()
+                {
+                    OwnerID = 1,
+                    Owner = users[0],
+                    RestrictedUsers = [users[1]],
+                },
+                new Account()
+                {
+                    OwnerID = 2,
+                    Owner = users[1],
+                    RestrictedUsers = [users[2], users[3]],
+                },
+                new Account()
+                {
+                    OwnerID = 3,
+                    Owner = users[2],
+                    RestrictedUsers = [users[4], users[5]],
+                },
+                new Account()
+                {
+                    OwnerID = 4,
+                    Owner = users[3],
+                    RestrictedUsers = [],
+                },
+                new Account()
+                {
+                    OwnerID = 5,
+                    Owner = users[4],
+                    RestrictedUsers = [],
+                },
+            ];
         }
 
         private static List<User> PrepareUserModels()

@@ -1,4 +1,4 @@
-namespace TrainingDiary.Models
+namespace WebMVC.Models
 {
     public class ErrorViewModel
     {

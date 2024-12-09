@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using TrainingDiary.Models;
+using WebMVC.Models;
 
-namespace TrainingDiary.Controllers
+namespace WebMVC.Controllers
 {
     public class HomeController : Controller
     {

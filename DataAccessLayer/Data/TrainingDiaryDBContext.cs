@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TrainingDiary.DAL.Models;
+using DataAccessLayer.Models;
 
-namespace TrainingDiary.DAL.Data
+namespace DataAccessLayer.Data
 {
     public class TrainingDiaryDBContext(DbContextOptions options) : DbContext(options)
     {

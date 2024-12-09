@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Principal;
 
-namespace TrainingDiary.DAL.Models
+namespace DataAccessLayer.Models
 {
     public class User : BaseEntity
     {

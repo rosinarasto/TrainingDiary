@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TrainingDiary.DAL.Models
+namespace DataAccessLayer.Models
 {
     public class TrainingRecord : BaseEntity
     {
