@@ -8,15 +8,19 @@ namespace DataAccessLayer.Data
         public static void Seed(this ModelBuilder modelBuilder)
         {
             var users = PrepareUserModels();
-            var accounts = PrepareAccountModels(users);
-            var trainingRecords = PrepairTrainingRecordModels();
-            var recordFields = PrepairRecordFieldModels();
+            var accounts = PrepareAccountModels();
+            var accountsUsers = PrepareAccountUserModels();
+            var trainingRecords = PrepareTrainingRecordModels();
+            var recordFields = PrepareRecordFieldModels();
 
             modelBuilder.Entity<User>()
                 .HasData(users);
 
             modelBuilder.Entity<Account>()
                 .HasData(accounts);
+
+            modelBuilder.Entity<AccountUser>()
+                .HasData(accountsUsers);
 
             modelBuilder.Entity<TrainingRecord>()
                 .HasData(trainingRecords);
@@ -25,49 +29,44 @@ namespace DataAccessLayer.Data
                 .HasData(recordFields);
         }
 
-        private static List<RecordField> PrepairRecordFieldModels()
+        private static List<RecordField> PrepareRecordFieldModels()
         {
             throw new NotImplementedException();
         }
 
-        private static List<TrainingRecord> PrepairTrainingRecordModels()
+        private static List<TrainingRecord> PrepareTrainingRecordModels()
         {
             throw new NotImplementedException();
         }
 
-        private static List<Account> PrepareAccountModels(List<User> users)
+        private static List<AccountUser> PrepareAccountUserModels()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static List<Account> PrepareAccountModels()
         {
             return
             [
                 new Account()
                 {
-                    OwnerID = 1,
-                    Owner = users[0],
-                    RestrictedUsers = [users[1]],
+                    Id = 1,
                 },
                 new Account()
                 {
-                    OwnerID = 2,
-                    Owner = users[1],
-                    RestrictedUsers = [users[2], users[3]],
+                    Id = 2,
                 },
                 new Account()
                 {
-                    OwnerID = 3,
-                    Owner = users[2],
-                    RestrictedUsers = [users[4], users[5]],
+                    Id = 3,
                 },
                 new Account()
                 {
-                    OwnerID = 4,
-                    Owner = users[3],
-                    RestrictedUsers = [],
+                    Id = 4,
                 },
                 new Account()
                 {
-                    OwnerID = 5,
-                    Owner = users[4],
-                    RestrictedUsers = [],
+                    Id = 5,
                 },
             ];
         }

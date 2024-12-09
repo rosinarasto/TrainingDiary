@@ -7,23 +7,31 @@ namespace DataAccessLayer.Data
     {
         public DbSet<Account> Accounts { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<AccountUser> accountUsers { get; set; }
         public DbSet<TrainingRecord> TrainingRecords { get; set; }
         public DbSet<RecordField> RecordFields { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Account>()
-                .HasMany(a => a.RestrictedUsers)
-                .WithMany(u => u.RestrictedAccounts)
-                .UsingEntity<Dictionary<string, object>>(
-                    "AccountStudent",
-                    j => j.HasOne<User>().WithMany().HasForeignKey("UserID"),
-                    j => j.HasOne<Account>().WithMany().HasForeignKey("AccountID"));
+            modelBuilder.Entity<AccountUser>()
+                .HasKey(au => new { au.AccountId, au.UserId });
+
+            modelBuilder.Entity<AccountUser>()
+                .HasOne(a => a.Account)
+                .WithMany(a => a.RestrictedUsers)
+                .HasForeignKey(a => a.AccountId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<AccountUser>()
+                .HasOne(a => a.User)
+                .WithMany(a => a.RestrictedAccounts)
+                .HasForeignKey(a => a.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<User>()
                 .HasOne(u => u.OwnedAccount)
                 .WithOne(a => a.Owner)
-                .HasForeignKey<Account>(a => a.OwnerID)
+                .HasForeignKey<Account>(a => a.Id)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<TrainingRecord>()

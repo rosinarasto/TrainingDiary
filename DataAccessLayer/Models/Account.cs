@@ -4,11 +4,9 @@ namespace DataAccessLayer.Models
 {
     public class Account : BaseEntity
     {
-        public int OwnerID { get; set; }
-
-        [ForeignKey(nameof(OwnerID))]
+        [ForeignKey(nameof(Id))]
         public virtual User? Owner { get; set; }
 
-        public virtual IEnumerable<User>? RestrictedUsers { get; set; }
+        public virtual IEnumerable<AccountUser>? RestrictedUsers { get; set; }
     }
 }

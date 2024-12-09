@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Security.Principal;
 
 namespace DataAccessLayer.Models
 {
@@ -20,7 +18,7 @@ namespace DataAccessLayer.Models
 
         public virtual Account? OwnedAccount { get; set; }
 
-        public virtual IEnumerable<Account>? RestrictedAccounts { get; set; }
+        public virtual IEnumerable<AccountUser>? RestrictedAccounts { get; set; }
 
         public virtual IEnumerable<TrainingRecord>? TrainingRecords { get; set; }
     }
