@@ -35,36 +35,42 @@ namespace DataAccessLayer.Data
                 [
                     new RecordField
                     {
+                        Id = 1,
                         RecordID = 1,
                         Name = "Record 1 Name",
                         Description = "Description for Record 1"
                     },
                     new RecordField
                     {
+                        Id = 2,
                         RecordID = 2,
                         Name = "Record 2 Name",
                         Description = "Description for Record 2"
                     },
                     new RecordField
                     {
+                        Id = 3,
                         RecordID = 2,
                         Name = "Record 3 Name",
                         Description = "Description for Record 3"
                     },
                     new RecordField
                     {
+                        Id = 4,
                         RecordID = 3,
                         Name = "Record 4 Name",
                         Description = "Description for Record 4"
                     },
                     new RecordField
                     {
+                        Id = 5,
                         RecordID = 4,
                         Name = "Record 5 Name",
                         Description = "Description for Record 5"
                     },
                     new RecordField
                     {
+                        Id = 6,
                         RecordID = 4,
                         Name = "Record 6 Name",
                         Description = "Description for Record 6"
@@ -78,22 +84,27 @@ namespace DataAccessLayer.Data
                 [
                     new TrainingRecord
                     {
+                        Id = 1,
                         OwnerId = 1,
                     },
                     new TrainingRecord
                     {
+                        Id = 2,
                         OwnerId = 2,
                     },
                     new TrainingRecord
                     {
+                        Id = 3,
                         OwnerId = 3,
                     },
                     new TrainingRecord
                     {
+                        Id = 4,
                         OwnerId = 4,
                     },
                     new TrainingRecord
                     {
+                        Id = 5,
                         OwnerId = 5,
                     },
                 ];
@@ -105,11 +116,13 @@ namespace DataAccessLayer.Data
                 [
                     new AccountUser
                     {
+                        Id = 1,
                         AccountId = 1,
                         UserId = 2,
                     },
                     new AccountUser
                     {
+                        Id = 2,
                         AccountId = 1,
                         UserId = 3,
                     }

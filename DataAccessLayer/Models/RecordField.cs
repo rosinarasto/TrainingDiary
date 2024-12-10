@@ -8,7 +8,7 @@ namespace DataAccessLayer.Models
         public int RecordID { get; set; }
 
         [ForeignKey(nameof(RecordID))]
-        public TrainingRecord? TrainingRecord { get; set; }
+        public virtual TrainingRecord? TrainingRecord { get; set; }
 
         [MinLength(1)]
         [MaxLength(255)]

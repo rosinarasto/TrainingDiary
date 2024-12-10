@@ -1,7 +1,26 @@
+using DataAccessLayer.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var mssqlDbName = "TRAINING-DIARY-DB";
+var mssqlConnectionString = $"Server=(localdb)\\mssqllocaldb;Integrated Security=True;MultipleActiveResultSets=True;Database={mssqlDbName};Trusted_Connection=True;";
+
+builder.Services.AddDbContextFactory<TrainingDiaryDBContext>(options =>
+{
+    options
+        .UseSqlServer(
+            mssqlConnectionString,
+            x => x.MigrationsAssembly("DataAccessLayer.MSSQL.Migrations")
+        )
+        .LogTo(s => System.Diagnostics.Debug.WriteLine(s))
+        .UseLazyLoadingProxies()
+        ;
+});
+
 
 var app = builder.Build();
 
