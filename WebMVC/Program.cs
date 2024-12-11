@@ -6,21 +6,25 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var mssqlDbName = "TRAINING-DIARY-DB";
-var mssqlConnectionString = $"Server=(localdb)\\mssqllocaldb;Integrated Security=True;MultipleActiveResultSets=True;Database={mssqlDbName};Trusted_Connection=True;";
+var envName = builder.Environment.EnvironmentName;
+
+IConfigurationRoot configuration = new ConfigurationBuilder()
+    .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+    .AddJsonFile("appsettings.json")
+    .AddJsonFile($"appsettings.{envName}.json", optional: true, reloadOnChange: true)
+    .Build();
+
+var mssqlConnectionString = configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContextFactory<TrainingDiaryDBContext>(options =>
 {
     options
-        .UseSqlServer(
-            mssqlConnectionString,
-            x => x.MigrationsAssembly("DataAccessLayer.MSSQL.Migrations")
-        )
+        .UseSqlServer(mssqlConnectionString, x => x.MigrationsAssembly("DataAccessLayer.MSSQL.Migrations"))
         .LogTo(s => System.Diagnostics.Debug.WriteLine(s))
+        .EnableSensitiveDataLogging(true)
         .UseLazyLoadingProxies()
         ;
 });
-
 
 var app = builder.Build();
 
