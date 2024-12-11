@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLayer.MSSQL.Migrations\DataAccessLayer.MSSQL.Migrations.csproj" />
-    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
   </ItemGroup>
 
 </Project>
